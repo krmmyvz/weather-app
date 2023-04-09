@@ -36,7 +36,10 @@ function Header() {
   };
   const handleLocationClick = () => {
     console.log(location.latitude);
-    setCoordinates(location.latitude, location.longitude);
+    setCoordinates({
+      lat: location.latitude,
+      lon: location.longitude,
+    });
   };
   return (
     <div className={`header ${theme}`}>
