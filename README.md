@@ -8,6 +8,7 @@ Patika.dev linkim: "https://app.patika.dev/keremyvz"
 Bu, kullanıcının hava durumunu arayabileceği bir React.js uygulamasıdır. OpenWeather API'sini kullanarak hava durumu bilgilerini getirir ve çeşitli şehirlerin adlarını içeren city.list.json dosyasını kullanarak arama yapabilir.
 
 ![Ekran Görüntüsü](https://github.com/krmmyvz/fmss-odev3/blob/main/screenshot.png)
+![Ekran Görüntüsü](https://github.com/krmmyvz/fmss-odev3/blob/main/screenshot2.png)
 
 ## Uygulama Bağlantısı
 
