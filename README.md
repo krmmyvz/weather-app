@@ -1,5 +1,6 @@
 # 3. Ödev (Weather App)
 Patika.dev &amp; FMSS Bilişim Front-end Practicum Hafta 3 - 3. Ödev
+<br/>
 Patika.dev linkim: "https://app.patika.dev/keremyvz"
 
 ## Açıklama
