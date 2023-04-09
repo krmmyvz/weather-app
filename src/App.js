@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import "./App.css";
 import Container from "./content/Container";
 import { WeatherContext } from "./context/WeatherContext";
@@ -16,7 +16,6 @@ import mist from "./assets/mist.jpg";
 function App() {
   const { currentWeather } = useContext(WeatherContext);
   let backgroundImageUrl = "";
-  console.log(currentWeather.weather[0].description);
 
   if (currentWeather && currentWeather.weather) {
     switch (currentWeather.weather[0].description) {
@@ -56,9 +55,24 @@ function App() {
     backgroundImageUrl = "none";
   }
 
+  // appHeight() fonksiyonu List içindeki bileşenin yüksekliğini ayarlayacak state'i tanımlar
+  const appHeight = () => {
+    const doc = document.documentElement;
+    doc.style.setProperty("--app-height", `${window.innerHeight}px`);
+  };
+  // useEffect fonksiyonu bileşen ilk render edildiğinde appHeight() fonksiyonunu çağırır
+
+  useEffect(() => {
+    window.addEventListener("resize", appHeight);
+    appHeight();
+    return () => {
+      window.removeEventListener("resize", appHeight);
+    };
+  }, []); //=> useEffect fonksiyonu sadece bir kez çağırır
+
   return (
     <div className="app" style={{ backgroundImage: backgroundImageUrl }}>
-      <Container></Container>;
+      <Container></Container>
     </div>
   );
 }

@@ -1,5 +1,4 @@
 .app {
-  background-image: url(https://wallpapershome.com/images/wallpapers/macos-big-sur-1280x720-dark-wwdc-2020-22655.jpg);
   background-size: cover;
   background-position: center;
   transition: background-image 0.5s ease-in-out;
@@ -7,9 +6,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 2em;
   width: 100%;
-  height: 100vh;
+  height: var(--app-height);
 }
 .container {
   background-color: var(--theme-bg-color);
@@ -26,6 +24,7 @@
   -webkit-backdrop-filter: blur(20px);
   font-size: 15px;
   font-weight: 500;
+  margin: 10px;
 }
 
 .header {
@@ -50,22 +49,32 @@
 
 .search-bar {
   flex-grow: 1;
+  display: flex;
+  align-items: center;
   height: 40px;
   width: 100%;
   max-width: 400px;
   border-radius: 4px;
+  box-sizing: border-box;
+  background-color: var(--search-bg);
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px rgba(134, 140, 160, 0.02);
 }
+
+.search-icon {
+  color: var(--theme-color);
+  margin: 0 8px 0 12px;
+  height: 100%;
+}
+
 .search-bar input {
   width: 100%;
   height: 100%;
-  border: none;
-  background-color: var(--search-bg);
-  border-radius: 4px;
+  background-color: transparent;
   font-family: var(--body-font);
-  font-size: 15px;
   font-weight: 500;
-  padding: 0 20px 0 40px;
-  box-shadow: 0 0 0 2px rgba(134, 140, 160, 0.02);
+  font-size: 15px;
+  border: none;
   color: var(--theme-color);
 }
 
@@ -74,6 +83,7 @@
   box-shadow: -1px 3px 8px -1px rgba(0, 0, 0, 0.2);
   height: 42px;
   width: 42px;
+  margin-left: 10px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -83,8 +93,9 @@
 
 .dark-light svg {
   width: 20px;
+  height: 20px;
   flex-shrink: 0;
-  stroke: var(--theme-color);
+  color: var(--theme-color);
   transition: 0.5s;
 }
 
@@ -105,39 +116,76 @@
 
 .app-card {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
   font-size: 16px;
   background-color: var(--content-bg);
   border-radius: 14px;
   border: 1px solid var(--theme-bg-color);
   padding: 20px;
-  cursor: pointer;
-  transition: background-image 0.5s ease;
 }
 
-.card-info {
-  display: flex;
-  flex-direction: column;
+.main-info,
+.detail-info {
+  flex: 1;
+  margin: 20px;
+}
+.main-info svg {
+  width: 64px;
+  height: 64px;
+}
+.detail-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+  grid-template-rows: repeat(auto-fit);
+
+  grid-gap: 10px;
   justify-content: center;
   align-items: center;
+}
+
+.app-card-mini {
+  display: flex;
   height: 100%;
+  flex-direction: column;
+  font-size: 16px;
+  background-color: var(--content-bg);
+  border-radius: 14px;
+  border: 1px solid var(--theme-bg-color);
+  padding: 20px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.app-card-mini:hover {
+  transform: scale(1.1);
+  background-color: var(--theme-bg-color);
+}
+.mini-header {
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+}
+.mini-info {
+  font-size: 24px;
+  font-weight: bold;
+  padding-top: 8px;
 }
 
 .city {
   font-size: 28px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 36px;
 }
 
 .temp {
-  font-size: 48px;
+  font-size: 58px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .description {
   text-transform: capitalize;
+  font-size: 18px;
 }
 
 .forecast-list {
@@ -145,6 +193,7 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
 .app-card-forecast {
   display: flex;
   flex-direction: column;
@@ -155,5 +204,80 @@
   border: 1px solid var(--theme-bg-color);
   padding: 20px;
   cursor: pointer;
-  transition: background-image 0.5s ease;
+  transition: 0.3s ease;
+}
+
+.app-card-forecast:hover {
+  transform: scale(1.1);
+  background-color: var(--theme-bg-color);
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  align-items: center;
+}
+
+.card-info svg {
+  width: 48px;
+  height: 48px;
+}
+.card-weather {
+  font-weight: bold;
+  font-size: 28px;
+}
+.card-desc {
+  text-transform: capitalize;
+}
+
+@media (max-width: 768px) {
+  .app-card,
+  .forecast-list {
+    flex-direction: column;
+  }
+  .app-card-forecast {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .logo {
+    display: none;
+  }
+  .search-bar {
+    max-width: none;
+    margin: 0 20px;
+  }
+  .city {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 18px;
+  }
+  .temp {
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+
+  .description {
+    text-transform: capitalize;
+    font-size: 14px;
+  }
+  .main-info svg {
+    width: 32px;
+    height: 32px;
+  }
+  .content-wrapper {
+    padding: 2px 16px;
+  }
+  .detail-info {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    margin: 10px 0;
+  }
+  .mini-header {
+    font-size: 15px;
+  }
+  .mini-info {
+    font-size: 18px;
+    padding-top: 4px;
+  }
 }

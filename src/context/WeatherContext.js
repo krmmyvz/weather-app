@@ -11,7 +11,6 @@ export const WeatherProvider = ({ children }) => {
     lon: 28.97,
   });
   const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -35,12 +34,16 @@ export const WeatherProvider = ({ children }) => {
               lon: coordinates.lon,
               appid: process.env.REACT_APP_API_KEY,
               units: "metric",
-              cnt: 5,
             },
           }
         );
         setCurrentWeather(currentWeatherResponse.data);
-        setDailyWeather(dailyWeatherResponse.data.list);
+        setDailyWeather(
+          dailyWeatherResponse.data.list.filter((item) =>
+            item.dt_txt.includes("12:00:00")
+          )
+        );
+
         setIsLoading(false);
       } catch (error) {
         console.error(error);

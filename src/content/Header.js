@@ -2,6 +2,11 @@ import { useContext, useState } from "react";
 import ThemeContext from "../context/ThemeContext";
 import { SearchContext } from "../context/SearchContext";
 import { WeatherContext } from "../context/WeatherContext";
+import {
+  MdOutlineDarkMode,
+  MdOutlineSearch,
+  MdLocationOn,
+} from "react-icons/md";
 
 function Header() {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -30,29 +35,24 @@ function Header() {
     <div className={`header ${theme}`}>
       <div className="logo">Weather App</div>
       <div className="search-bar">
+        <MdOutlineSearch className="search-icon" />
         <input
           type="text"
           placeholder="Search"
           value={searchTerm}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
-        />
+        ></input>
       </div>
       <div className="mode-container">
+        <div className="dark-light">
+          <MdLocationOn />
+        </div>
         <div
           className="dark-light"
           onClick={() => setTheme(theme === "light" ? "dark" : "light")}
         >
-          <svg
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
-          </svg>
+          <MdOutlineDarkMode />
         </div>
       </div>
     </div>
