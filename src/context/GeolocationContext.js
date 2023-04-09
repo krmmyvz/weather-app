@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import Loading from "../content/Loading";
 
 export const GeolocationContext = createContext();
 
