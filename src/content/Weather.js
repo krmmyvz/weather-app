@@ -50,7 +50,6 @@ function Weather() {
   if (!currentWeather) {
     return null;
   }
-  console.log(currentWeather);
   return (
     <div className="content-wrapper">
       <div className="content-section-title">Current Weather</div>

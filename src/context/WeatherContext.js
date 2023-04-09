@@ -1,16 +1,22 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { GeolocationContext } from "./GeolocationContext";
 
 export const WeatherContext = createContext();
 
 export const WeatherProvider = ({ children }) => {
+  const { location } = useContext(GeolocationContext);
+
   const [currentWeather, setCurrentWeather] = useState(null);
   const [dailyWeather, setDailyWeather] = useState([]);
-  const [coordinates, setCoordinates] = useState({
-    lat: 41.0,
-    lon: 28.97,
-  });
+  const [coordinates, setCoordinates] = useState(
+    {
+      lat: location.latitude,
+      lon: location.longitude,
+    } || { lat: 41.013, lon: 28.949 }
+  );
   const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -55,7 +61,7 @@ export const WeatherProvider = ({ children }) => {
 
   if (isLoading) {
     //TODD
-    return <div>Loading...</div>;
+    return <div className="loading">Loading...</div>;
   }
   return (
     <WeatherContext.Provider

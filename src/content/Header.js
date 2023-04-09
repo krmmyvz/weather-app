@@ -2,16 +2,19 @@ import { useContext, useState } from "react";
 import ThemeContext from "../context/ThemeContext";
 import { SearchContext } from "../context/SearchContext";
 import { WeatherContext } from "../context/WeatherContext";
+import Logo from "../assets/logo.png";
 import {
   MdOutlineDarkMode,
   MdOutlineSearch,
   MdLocationOn,
 } from "react-icons/md";
+import { GeolocationContext } from "../context/GeolocationContext";
 
 function Header() {
   const { theme, setTheme } = useContext(ThemeContext);
   const { searchJsonData } = useContext(SearchContext);
   const { setCoordinates } = useContext(WeatherContext);
+  const { location } = useContext(GeolocationContext);
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleInputChange = (event) => {
@@ -31,9 +34,15 @@ function Header() {
       }
     }
   };
+  const handleLocationClick = () => {
+    console.log(location.latitude);
+    setCoordinates(location.latitude, location.longitude);
+  };
   return (
     <div className={`header ${theme}`}>
-      <div className="logo">Weather App</div>
+      <div className="logo">
+        <img src={Logo} className="logo-img" alt="Logo" /> Weather App
+      </div>
       <div className="search-bar">
         <MdOutlineSearch className="search-icon" />
         <input
@@ -45,7 +54,7 @@ function Header() {
         ></input>
       </div>
       <div className="mode-container">
-        <div className="dark-light">
+        <div className="dark-light" onClick={() => handleLocationClick()}>
           <MdLocationOn />
         </div>
         <div
