@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { GeolocationContext } from "./GeolocationContext";
+import Loading from "../content/Loading";
 
 export const WeatherContext = createContext();
 
@@ -60,8 +61,7 @@ export const WeatherProvider = ({ children }) => {
   }, [coordinates.lat, coordinates.lon]);
 
   if (isLoading) {
-    //TODD
-    return <div className="loading">Loading...</div>;
+    return <Loading />;
   }
   return (
     <WeatherContext.Provider

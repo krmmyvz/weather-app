@@ -27,7 +27,7 @@ export const GeolocationProvider = ({ children }) => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   } else {
     return (
       <GeolocationContext.Provider value={{ location }}>
