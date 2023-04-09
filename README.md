@@ -11,7 +11,7 @@ Bu, kullanıcının hava durumunu arayabileceği bir React.js uygulamasıdır. O
 ## Uygulama Bağlantısı
 
 Uygulama, Vercel üzerinde canlı olarak yayınlanmaktadır. Aşağıdaki link üzerinden erişebilirsiniz:
-[https://example-todo-app.vercel.app/](https://fmss-odev3.vercel.app/)
+[https://fmss-odev3.vercel.app/](https://fmss-odev3.vercel.app/)
 
 ## Proje Yapısı
 Proje, aşağıdaki bileşenleri içermektedir:
