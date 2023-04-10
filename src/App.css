@@ -8,6 +8,7 @@
   flex-direction: column;
   width: 100%;
   height: var(--app-height);
+  background-color: #537a97;
 }
 .container {
   background-color: var(--theme-bg-color);
@@ -58,14 +59,14 @@
   flex-grow: 1;
   display: flex;
   align-items: center;
-  height: 40px;
+  height: 42px;
   width: 100%;
   max-width: 400px;
   border-radius: 4px;
   box-sizing: border-box;
   background-color: var(--theme-bg-color);
   border-radius: 12px;
-  box-shadow: 0 0 0 2px rgba(134, 140, 160, 0.02);
+  box-shadow: 0 0 0 2px rgba(134, 140, 160, 0.2);
 }
 
 .search-icon {
@@ -258,6 +259,9 @@
   .app-card-forecast {
     width: 100%;
     margin-bottom: 20px;
+  }
+  .app-card-forecast:hover {
+    transform: scale(1.02);
   }
   .logo {
     display: none;

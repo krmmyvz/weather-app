@@ -35,11 +35,14 @@ function Header() {
     }
   };
   const handleLocationClick = () => {
-    console.log(location.latitude);
-    setCoordinates({
-      lat: location.latitude,
-      lon: location.longitude,
-    });
+    if (location) {
+      setCoordinates({
+        lat: location.latitude,
+        lon: location.longitude,
+      });
+    } else {
+      alert("Please allow location from your browser");
+    }
   };
   return (
     <div className={`header ${theme}`}>

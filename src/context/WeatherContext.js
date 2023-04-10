@@ -11,11 +11,11 @@ export const WeatherProvider = ({ children }) => {
   const [currentWeather, setCurrentWeather] = useState(null);
   const [dailyWeather, setDailyWeather] = useState([]);
   const [coordinates, setCoordinates] = useState(
-    {
-      lat: location.latitude,
-      lon: location.longitude,
-    } || { lat: 41.013, lon: 28.949 }
+    location
+      ? { lat: location.latitude, lon: location.longitude }
+      : { lat: 41.013, lon: 28.949 }
   );
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

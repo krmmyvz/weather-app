@@ -14,11 +14,15 @@ export const GeolocationProvider = ({ children }) => {
           setLocation(position.coords);
           setLoading(false);
         },
-        () => {
+        (error) => {
           setLoading(false);
-          alert(
-            "To see the weather in your location, please allow us to see your location."
-          );
+          if (error.code === error.PERMISSION_DENIED) {
+            alert(
+              "To see the weather in your location, please allow us to see your location."
+            );
+          } else {
+            alert("Error getting location.");
+          }
         }
       );
     } else {
