@@ -1,8 +1,4 @@
-# 3. Ödev (Weather App)
-Patika.dev &amp; FMSS Bilişim Front-end Practicum Hafta 3 - 3. Ödev
-<br/>
-Patika.dev linkim: "https://app.patika.dev/keremyvz"
-
+# Weather App
 ## Açıklama
 
 Bu, kullanıcının hava durumunu arayabileceği bir React.js uygulamasıdır. OpenWeather API'sini kullanarak hava durumu bilgilerini getirir ve çeşitli şehirlerin adlarını içeren city.list.json dosyasını kullanarak arama yapabilir.
