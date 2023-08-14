@@ -16,6 +16,7 @@ import {
   WiSunset,
   WiThermometer,
 } from "react-icons/wi";
+import Footer from "./Footer";
 
 function Weather() {
   const { currentWeather, dailyWeather } = useContext(WeatherContext);
@@ -176,6 +177,7 @@ function Weather() {
           </div>
         ))}
       </div>
+      <Footer />
     </div>
   );
 }
